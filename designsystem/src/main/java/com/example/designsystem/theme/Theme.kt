@@ -10,6 +10,10 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.example.designsystem.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -31,6 +35,15 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
     */
+)
+
+val NotoSans = FontFamily(
+    Font(R.font.notosans_bold, FontWeight.Bold),
+    Font(R.font.notosans_thin, FontWeight.Thin),
+    Font(R.font.notosans_light, FontWeight.Light),
+    Font(R.font.notosans_medium, FontWeight.Medium),
+    Font(R.font.notosans_regular, FontWeight.Normal),
+    Font(R.font.notosans_extrabold, FontWeight.Bold),
 )
 
 @Composable

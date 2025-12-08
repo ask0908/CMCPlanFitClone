@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.designsystem.theme.NotoSans
 import com.example.designsystem.theme.SplashBackground
 import com.example.designsystem.theme.SplashMintText
 import com.example.presentation.ui.theme.CMCPlanFitCloneTheme
@@ -53,15 +54,18 @@ fun PlanFitSplashScreen(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(SplashBackground)
     ) {
         Text(
-            modifier = Modifier.align(Alignment.TopCenter)
+            modifier = Modifier
+                .align(Alignment.TopCenter)
                 .padding(top = 200.dp),
             text = stringResource(R.string.splashTitle),
             fontSize = splashTitleFontSize,
             fontWeight = FontWeight.Bold,
+            fontFamily = NotoSans,
             color = SplashMintText,
         )
     }
