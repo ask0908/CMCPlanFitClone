@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CMCPlanFitClone</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <!-- 스플래시 -->
+    <string name="splashTitle">PlanFit</string>
 </resources>
