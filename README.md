@@ -2,6 +2,81 @@
 
 ---
 
+## 모듈 구조
+
+```mermaid
+flowchart TB
+    subgraph app_layer["App Module"]
+        app[":app"]
+    end
+
+    subgraph ui_layer["UI Layer"]
+        presentation[":presentation"]
+        designsystem[":designsystem"]
+    end
+
+    subgraph data_layer["Data Layer"]
+        data[":data"]
+    end
+
+    subgraph domain_layer["Domain Layer"]
+        domain[":domain"]
+    end
+
+    subgraph nav_layer["Navigation"]
+        navigation[":navigation"]
+    end
+
+    app -.-> presentation
+    app -.-> data
+    app -.-> designsystem
+
+    presentation -.-> domain
+    presentation -.-> designsystem
+    presentation -.-> navigation
+
+    data -.-> domain
+
+    style app fill:#1976D2,stroke:#1976D2,stroke-width:2px,color:#fff
+    style presentation fill:#F57C00,stroke:#F57C00,stroke-width:2px,color:#fff
+    style data fill:#7B1FA2,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style domain fill:#388E3C,stroke:#388E3C,stroke-width:2px,color:#fff
+    style navigation fill:#F9A825,stroke:#F9A825,stroke-width:2px,color:#000
+    style designsystem fill:#C2185B,stroke:#C2185B,stroke-width:2px,color:#fff
+
+    style app_layer fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style ui_layer fill:#FFF3E0,stroke:#F57C00,stroke-width:2px
+    style data_layer fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
+    style domain_layer fill:#E8F5E9,stroke:#388E3C,stroke-width:2px
+    style nav_layer fill:#FFF9C4,stroke:#F9A825,stroke-width:2px
+```
+
+- **App** 
+  - 모든 모듈 통합
+  - hilt 설정
+
+- **Presentation**
+  - 컴포즈 UI 화면 담당
+  - UI 상태 관리
+
+- **data**
+  - repository 구현체 포함
+  - 데이터 소스(local, remote)
+  - mapper를 통한 데이터 매핑
+
+- **domain**
+  - 비즈니스 로직 + entity
+  - UseCase, repository 인터페이스 포함
+
+- **navigation**
+  - 화면 라우팅 정의, 화면 전환 로직 포함
+  - 네비게이션 그래프
+  - presentation 모듈에서 사용
+  - route 정의 중앙 집중화, Type Safety 네비게이션 구현을 위해 navigation 모듈 정의
+
+- **designsystem**
+  - 테마(Color, Typo, Shape), 커스텀 컴포저블 포함
+
 ## 앱 스펙
 
 - 실제 앱은 카카오, 애플, 구글, 페북 로그인이 있지만 로그인은 생략하고 UI만 최대한 비슷하게 구현
