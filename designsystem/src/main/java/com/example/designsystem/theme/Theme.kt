@@ -43,7 +43,7 @@ val NotoSans = FontFamily(
     Font(R.font.notosans_light, FontWeight.Light),
     Font(R.font.notosans_medium, FontWeight.Medium),
     Font(R.font.notosans_regular, FontWeight.Normal),
-    Font(R.font.notosans_extrabold, FontWeight.Bold),
+    Font(R.font.notosans_extrabold, FontWeight.ExtraBold),
 )
 
 @Composable
