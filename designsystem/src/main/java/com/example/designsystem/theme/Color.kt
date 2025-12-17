@@ -16,3 +16,6 @@ val SplashMintText = Color(0xFF15EFCA)
 
 // SNS 로그인 버튼
 val FacebookLoginButton = Color(0xFF1777F1)
+
+// 선택 가능한 카드 배경색
+val SelectableCardBackground = Color(0xFF3D3F46)

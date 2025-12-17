@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CMCPlanFitClone">
         <activity
+            android:name=".login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.CMCPlanFitClone" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"
@@ -25,7 +30,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.CMCPlanFitClone"/>
+            android:theme="@style/Theme.CMCPlanFitClone" />
     </application>
 
 </manifest>

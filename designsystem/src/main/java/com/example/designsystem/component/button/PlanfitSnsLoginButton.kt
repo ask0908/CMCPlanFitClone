@@ -1,13 +1,12 @@
 package com.example.designsystem.component.button
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,22 +18,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.designsystem.R
 import com.example.designsystem.foundation.Dimension.snsLoginButtonFontSize
 import com.example.designsystem.foundation.Dimension.snsLoginButtonRadius
-import com.example.designsystem.foundation.Dimension.splashFontSize
-import com.example.designsystem.foundation.Spacing.spacing0
-import com.example.designsystem.foundation.Spacing.spacing12
-import com.example.designsystem.foundation.Spacing.spacing24
-import com.example.designsystem.foundation.Spacing.spacing56
+import com.example.designsystem.foundation.Spacing.dp0
+import com.example.designsystem.foundation.Spacing.dp12
+import com.example.designsystem.foundation.Spacing.dp24
+import com.example.designsystem.foundation.Spacing.dp56
 import com.example.designsystem.theme.CMCPlanFitCloneTheme
 import com.example.designsystem.theme.FacebookLoginButton
 import com.example.designsystem.theme.NotoSans
@@ -42,8 +38,8 @@ import com.example.designsystem.theme.NotoSans
 @Composable
 fun PlanfitSnsLoginButton(
     modifier: Modifier = Modifier,
-    icon: Painter,
-    iconSize: Dp = spacing24,
+    @DrawableRes iconRes: Int,
+    iconSize: Dp = dp24,
     text: String? = null,
     onClick: () -> Unit,
     backgroundColor: Color = Color.White,
@@ -52,10 +48,11 @@ fun PlanfitSnsLoginButton(
     val snsLoginButtonFontSize = with(LocalDensity.current) {
         snsLoginButtonFontSize.toSp()
     }
+    val icon = painterResource(id = iconRes)
 
     Button(
         modifier = if (text == null) {
-            modifier.size(spacing56)
+            modifier.size(dp56)
         } else {
             modifier.fillMaxWidth()
         },
@@ -68,7 +65,7 @@ fun PlanfitSnsLoginButton(
         // 버튼의 기본 패딩 때문에 아이콘 크기가 변경되지 않음
         // text가 없을 경우 버튼 패딩 제거
         contentPadding = if (text == null) {
-            PaddingValues(spacing0)
+            PaddingValues(dp0)
         } else {
             ButtonDefaults.ContentPadding
         },
@@ -93,7 +90,7 @@ fun PlanfitSnsLoginButton(
                         .offset(x = (-12).dp),
                     tint = Color.Unspecified
                 )
-                Spacer(modifier = Modifier.width(spacing12))
+                Spacer(modifier = Modifier.width(dp12))
                 Text(
                     modifier = Modifier.align(Alignment.Center),
                     text = text,
@@ -113,26 +110,26 @@ private fun PlanfitSnsLoginButtonPreview() {
         Column {
             PlanfitSnsLoginButton(
                 text = "카카오로 계속하기",
-                icon = painterResource(id = R.drawable.kakao_symbol),
+                iconRes = R.drawable.kakao_symbol,
                 onClick = {},
                 backgroundColor = Color.Yellow,
                 contentColor = Color.Black
             )
             PlanfitSnsLoginButton(
                 text = "Apple로 계속하기",
-                icon = painterResource(id = R.drawable.apple_symbol),
+                iconRes = R.drawable.apple_symbol,
                 onClick = {},
                 backgroundColor = Color.White,
                 contentColor = Color.Black
             )
             PlanfitSnsLoginButton(
-                icon = painterResource(id = R.drawable.facebook_symbol),
+                iconRes = R.drawable.facebook_symbol,
                 onClick = {},
                 backgroundColor = FacebookLoginButton,
                 iconSize = 32.dp
             )
             PlanfitSnsLoginButton(
-                icon = painterResource(id = R.drawable.google_symbol),
+                iconRes = R.drawable.google_symbol,
                 onClick = {},
                 backgroundColor = Color.White,
                 iconSize = 32.dp

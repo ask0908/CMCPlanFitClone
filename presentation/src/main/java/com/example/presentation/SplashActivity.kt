@@ -23,6 +23,7 @@ import com.example.designsystem.foundation.Dimension.splashTopPadding
 import com.example.designsystem.theme.NotoSans
 import com.example.designsystem.theme.SplashBackground
 import com.example.designsystem.theme.SplashMintText
+import com.example.presentation.login.LoginActivity
 import com.example.presentation.ui.theme.CMCPlanFitCloneTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -36,7 +37,7 @@ class SplashActivity : ComponentActivity() {
             CMCPlanFitCloneTheme {
                 PlanFitSplashScreen {
                     startActivity(
-                        Intent(this, MainActivity::class.java)
+                        Intent(this, LoginActivity::class.java)
                     )
                     finish()
                 }
