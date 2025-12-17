@@ -13,3 +13,9 @@ val Pink40 = Color(0xFF7D5260)
 // 스플래시
 val SplashBackground = Color(0xFF1F2125)
 val SplashMintText = Color(0xFF15EFCA)
+
+// SNS 로그인 버튼
+val FacebookLoginButton = Color(0xFF1777F1)
+
+// 선택 가능한 카드 배경색
+val SelectableCardBackground = Color(0xFF3D3F46)

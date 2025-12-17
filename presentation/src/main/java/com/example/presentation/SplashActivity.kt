@@ -18,10 +18,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.example.designsystem.foundation.Spacing
 import com.example.designsystem.theme.NotoSans
 import com.example.designsystem.theme.SplashBackground
 import com.example.designsystem.theme.SplashMintText
+import com.example.presentation.login.LoginActivity
 import com.example.presentation.ui.theme.CMCPlanFitCloneTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -35,7 +36,7 @@ class SplashActivity : ComponentActivity() {
             CMCPlanFitCloneTheme {
                 PlanFitSplashScreen {
                     startActivity(
-                        Intent(this, MainActivity::class.java)
+                        Intent(this, LoginActivity::class.java)
                     )
                     finish()
                 }
@@ -50,7 +51,7 @@ fun PlanFitSplashScreen(
 ) {
     // sp를 쓰면 시스템 글자 크기에 영향을 받아서 dp를 sp로 변환
     val splashTitleFontSize = with(LocalDensity.current) {
-        48.dp.toSp()
+        Spacing.dp48.toSp()
     }
 
     Box(
@@ -61,7 +62,7 @@ fun PlanFitSplashScreen(
         Text(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 200.dp),
+                .padding(top = Spacing.dp200),
             text = stringResource(R.string.splashTitle),
             fontSize = splashTitleFontSize,
             fontWeight = FontWeight.Bold,

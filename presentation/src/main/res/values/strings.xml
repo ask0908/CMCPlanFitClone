@@ -4,4 +4,14 @@
 
     <!-- 스플래시 -->
     <string name="splashTitle">PlanFit</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <!-- 로그인 -->
+    <string name="login_screen_top">운동 고민 끝,\n플랜핏에 오신 것을\n환영합니다!</string>
+    <string name="login_screen_bottom">3초 가입으로 바로 시작해보세요</string>
+    <string name="kakao_login">카카오로 계속하기</string>
+    <string name="apple_login">Apple로 계속하기</string>
+    <string name="login_alert">로그인하시면 아래 내용에 동의하는 것으로 간주됩니다</string>
+    <string name="personal_information_policy">개인정보처리방침</string>
+    <string name="terms_conditions">이용약관</string>
 </resources>
