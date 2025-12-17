@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
-    namespace = "com.example.navigation"
+    namespace = "com.example.navigation.api"
     compileSdk {
         version = release(36)
     }
@@ -35,6 +36,12 @@ android {
 }
 
 dependencies {
-    api(project(":navigation:api"))
-    api(project(":navigation:impl"))
+    implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    api(libs.androidx.navigation3.runtime)
+    api(libs.kotlinx.serialization.json)
+    api(libs.kotlinx.serialization.core.lib)
 }
