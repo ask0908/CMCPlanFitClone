@@ -25,8 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.designsystem.R
-import com.example.designsystem.foundation.Dimension.snsLoginButtonFontSize
-import com.example.designsystem.foundation.Dimension.snsLoginButtonRadius
+import com.example.designsystem.foundation.Spacing
 import com.example.designsystem.foundation.Spacing.dp0
 import com.example.designsystem.foundation.Spacing.dp12
 import com.example.designsystem.foundation.Spacing.dp24
@@ -46,7 +45,7 @@ fun PlanfitSnsLoginButton(
     contentColor: Color = Color.Black
 ) {
     val snsLoginButtonFontSize = with(LocalDensity.current) {
-        snsLoginButtonFontSize.toSp()
+        Spacing.dp16.toSp()
     }
     val icon = painterResource(id = iconRes)
 
@@ -56,7 +55,7 @@ fun PlanfitSnsLoginButton(
         } else {
             modifier.fillMaxWidth()
         },
-        shape = RoundedCornerShape(snsLoginButtonRadius),
+        shape = RoundedCornerShape(Spacing.dp8),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor,
