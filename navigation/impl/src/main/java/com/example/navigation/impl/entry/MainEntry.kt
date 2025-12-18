@@ -8,7 +8,7 @@ import com.example.presentation.main.MainScreen
 /**
  * 메인 화면 Entry Builder
  */
-fun EntryProviderScope<NavKey>.mainEntryBuilder(
+fun EntryProviderScope<NavKey>.mainEntry(
     onNavigateToLogin: () -> Unit,
     onNavigateBack: () -> Unit
 ) {

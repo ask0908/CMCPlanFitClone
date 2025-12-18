@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
     implementation(project(":designsystem"))
+    implementation(project(":navigation:api"))
     implementation(project(":navigation:impl"))
 
     implementation(libs.androidx.core.ktx)
@@ -71,6 +72,9 @@ dependencies {
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
 
     implementation(libs.kotlinx.serialization.core.lib)
 

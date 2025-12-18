@@ -8,7 +8,7 @@ import com.example.presentation.onboarding.OnboardingScreen
 /**
  * 온보딩 화면 Entry Builder
  */
-fun EntryProviderScope<NavKey>.onboardingEntryBuilder(
+fun EntryProviderScope<NavKey>.onboardingEntry(
     onNavigateToNextStep: (Int) -> Unit,
     onNavigateToPreviousStep: () -> Unit,
     onNavigateToMain: () -> Unit

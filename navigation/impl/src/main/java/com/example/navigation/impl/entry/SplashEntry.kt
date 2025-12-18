@@ -5,7 +5,7 @@ import androidx.navigation3.runtime.NavKey
 import com.example.navigation.api.SplashNavKey
 import com.example.presentation.splash.SplashScreen
 
-fun EntryProviderScope<NavKey>.splashEntryBuilder(
+fun EntryProviderScope<NavKey>.splashEntry(
     onNavigateToLogin: () -> Unit,
 ) {
     entry<SplashNavKey> {

@@ -5,7 +5,10 @@ import androidx.navigation3.runtime.NavKey
 import com.example.navigation.api.LoginNavKey
 import com.example.presentation.login.LoginScreen
 
-fun EntryProviderScope<NavKey>.loginEntryBuilder(
+/**
+ * 로그인 화면 Entry Builder
+ */
+fun EntryProviderScope<NavKey>.loginEntry(
     onNavigateToOnboarding: () -> Unit,
 ) {
     entry<LoginNavKey> {
