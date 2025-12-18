@@ -1,9 +1,5 @@
 package com.example.presentation.login
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -27,35 +23,31 @@ import com.example.presentation.login.constant.LoginConstants
 private const val TOP_TITLE_WEIGHT = 0.48f
 private const val LOGIN_BUTTON_BOTTOM_WEIGHT = 0.4f
 
-class LoginActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            CMCPlanFitCloneTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(modifier = Modifier.padding(innerPadding))
+@Composable
+fun LoginScreen(
+    onNavigateToOnboarding: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    CMCPlanFitCloneTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            PlanfitLoginBackground {
+                Column(
+                    modifier = modifier
+                        .padding(innerPadding)
+                        .fillMaxSize()
+                        .padding(dp24),
+                ) {
+                    WelcomeTitles()
+                    Spacer(modifier = Modifier.fillMaxHeight(TOP_TITLE_WEIGHT))
+
+                    SnsLoginButtons {
+                        onNavigateToOnboarding()
+                    }
+                    Spacer(modifier = Modifier.fillMaxHeight(LOGIN_BUTTON_BOTTOM_WEIGHT))
+
+                    LoginTermsSection()
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
-    PlanfitLoginBackground {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(dp24),
-        ) {
-            WelcomeTitles()
-            Spacer(modifier = Modifier.fillMaxHeight(TOP_TITLE_WEIGHT))
-
-            SnsLoginButtons()
-            Spacer(modifier = Modifier.fillMaxHeight(LOGIN_BUTTON_BOTTOM_WEIGHT))
-
-            LoginTermsSection()
         }
     }
 }
@@ -95,7 +87,7 @@ private fun drawRightToCenterCurve(
     path.cubicTo(
         scope.size.width * 0.65f, scope.size.height * 0.25f,
         scope.size.width * 0.558f, scope.size.height * 0.35f,
-        scope.size.width * 0.5f, scope.size.height * 0.40f,
+        scope.size.width * 0.5f, scope.size.height * 0.40f
     )
 }
 
@@ -106,14 +98,16 @@ private fun drawCenterToLeftCurve(
     path.cubicTo(
         scope.size.width * 0.45f, scope.size.height * 0.45f,
         scope.size.width * 0.25f, scope.size.height * 0.55f,
-        0f, scope.size.height * 0.55f,
+        0f, scope.size.height * 0.55f
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+private fun LoginScreenPreview() {
     CMCPlanFitCloneTheme {
-        LoginScreen()
+        LoginScreen(
+            onNavigateToOnboarding = {},
+        )
     }
 }
