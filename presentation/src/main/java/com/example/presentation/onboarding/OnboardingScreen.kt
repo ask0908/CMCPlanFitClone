@@ -18,6 +18,9 @@ import com.example.presentation.onboarding.screen.OnboardingScreen1
 import com.example.presentation.onboarding.screen.OnboardingScreen2
 import com.example.presentation.onboarding.screen.OnboardingScreen3
 import com.example.presentation.onboarding.screen.OnboardingScreen4
+import com.example.presentation.onboarding.screen.OnboardingScreen5
+import com.example.presentation.onboarding.screen.OnboardingScreen6
+import com.example.presentation.onboarding.screen.OnboardingScreen7
 
 /**
  * Scaffold body 안에서 currentStep에 따라 when 써서 표시하는 컴포저블을 다르게 설정
@@ -66,15 +69,15 @@ fun OnboardingScreen(
                 4 -> OnboardingScreen4(
                     onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
                 )
-                5 -> {
-                    //
-                }
-                6 -> {
-                    //
-                }
-                7 -> {
-                    //
-                }
+                5 -> OnboardingScreen5(
+                    onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
+                )
+                6 -> OnboardingScreen6(
+                    onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
+                )
+                7 -> OnboardingScreen7(
+                    onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
+                )
                 8 -> {
                     //
                 }

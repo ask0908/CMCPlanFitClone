@@ -91,7 +91,8 @@ fun OnboardingScreen3(
                 value = searchText,
                 onValueChange = { newValue ->
                     searchText = newValue
-                }
+                },
+                placeholder = "주소로 검색하면 더 빠르게 찾을 수 있어요!"
             )
 
             Spacer(modifier = Modifier.weight(1f))

@@ -27,7 +27,8 @@ fun PlanfitTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    placeholder: String = "주소로 검색하면 더 빠르게 찾을 수 있어요!"
+    placeholder: String = "",
+    showLeadingIcon: Boolean = true,
 ) {
     TextField(
         value = value,
@@ -39,12 +40,16 @@ fun PlanfitTextField(
                 color = Color.White.copy(alpha = 0.5f)
             )
         },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "검색",
-                tint = Color.White.copy(alpha = 0.7f)
-            )
+        leadingIcon = if (showLeadingIcon) {
+            {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "검색",
+                    tint = Color.White.copy(alpha = 0.7f)
+                )
+            }
+        } else {
+            null
         },
         colors = TextFieldDefaults.colors(
             focusedContainerColor = Color(0xFF3D3F46),
