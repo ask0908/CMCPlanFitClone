@@ -46,9 +46,6 @@ object NavigationModule {
             onNavigateToNextStep = { currentStep ->
                 navigator.navigateToNextOnboardingStep(currentStep)
             },
-            onNavigateToPreviousStep = {
-                navigator.popBackStack()
-            },
             onNavigateToMain = {
                 navigator.navigateToMainFromOnboarding()
             }

@@ -10,14 +10,12 @@ import com.example.presentation.onboarding.OnboardingScreen
  */
 fun EntryProviderScope<NavKey>.onboardingEntry(
     onNavigateToNextStep: (Int) -> Unit,
-    onNavigateToPreviousStep: () -> Unit,
     onNavigateToMain: () -> Unit
 ) {
     entry<OnboardingNavKey> { navKey ->
         OnboardingScreen(
             currentStep = navKey.step,
             onNavigateToNextStep = onNavigateToNextStep,
-            onNavigateToPreviousStep = onNavigateToPreviousStep,
             onNavigateToMain = onNavigateToMain
         )
     }

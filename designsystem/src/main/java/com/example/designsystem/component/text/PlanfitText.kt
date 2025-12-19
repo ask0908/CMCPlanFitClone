@@ -1,18 +1,21 @@
 package com.example.designsystem.component.text
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.designsystem.foundation.Spacing
+import com.example.designsystem.theme.CMCPlanFitCloneTheme
 import com.example.designsystem.theme.NotoSans
 
 @Composable
 fun PlanfitText(
     text: String,
-    color: Color,
+    color: Color = Color.White,
     fontSize: Dp? = null,
 ) {
     val currentLocalDensity = LocalDensity.current
@@ -32,4 +35,17 @@ fun PlanfitText(
         fontWeight = FontWeight.Normal,
         fontSize = textDefaultSize ?: textSize
     )
+}
+
+@Preview
+@Composable
+private fun PlatfitTextPreview() {
+    CMCPlanFitCloneTheme {
+        Column {
+            PlanfitText(
+                text = "테스트",
+                color = Color.White,
+            )
+        }
+    }
 }
