@@ -14,6 +14,10 @@ import com.example.designsystem.component.text.PlanfitText
 import com.example.designsystem.foundation.Spacing
 import com.example.designsystem.theme.CMCPlanFitCloneTheme
 import com.example.presentation.onboarding.component.OnboardingProgressBar
+import com.example.presentation.onboarding.screen.OnboardingScreen1
+import com.example.presentation.onboarding.screen.OnboardingScreen2
+import com.example.presentation.onboarding.screen.OnboardingScreen3
+import com.example.presentation.onboarding.screen.OnboardingScreen4
 
 /**
  * Scaffold body 안에서 currentStep에 따라 when 써서 표시하는 컴포저블을 다르게 설정
@@ -59,9 +63,9 @@ fun OnboardingScreen(
                 3 -> OnboardingScreen3(
                     onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
                 )
-                4 -> {
-                    //
-                }
+                4 -> OnboardingScreen4(
+                    onNavigateToNextStep = { onNavigateToNextStep(currentStep) }
+                )
                 5 -> {
                     //
                 }

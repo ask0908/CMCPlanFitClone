@@ -3,9 +3,13 @@ package com.example.designsystem.component.text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.designsystem.foundation.Spacing
@@ -14,9 +18,15 @@ import com.example.designsystem.theme.NotoSans
 
 @Composable
 fun PlanfitText(
+    modifier: Modifier = Modifier,
     text: String,
     color: Color = Color.White,
+    textDecoration: TextDecoration? = null,
+    fontWeight: FontWeight? = null,
     fontSize: Dp? = null,
+    overflow: TextOverflow = TextOverflow.Clip,
+    textAlign: TextAlign? = null,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     val currentLocalDensity = LocalDensity.current
     val textDefaultSize = fontSize?.let { size ->
@@ -29,11 +39,16 @@ fun PlanfitText(
     }
 
     Text(
+        modifier = modifier,
         text = text,
         color = color,
+        textDecoration = textDecoration,
         fontFamily = NotoSans,
-        fontWeight = FontWeight.Normal,
-        fontSize = textDefaultSize ?: textSize
+        fontWeight = fontWeight ?: FontWeight.Normal,
+        fontSize = textDefaultSize ?: textSize,
+        textAlign = textAlign,
+        overflow = overflow,
+        maxLines = maxLines,
     )
 }
 
