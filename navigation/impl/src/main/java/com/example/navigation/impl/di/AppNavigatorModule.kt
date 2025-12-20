@@ -3,6 +3,7 @@ package com.example.navigation.impl.di
 import androidx.compose.runtime.MutableState
 import androidx.navigation3.runtime.NavKey
 import com.example.navigation.api.AppNavigator
+import com.example.navigation.api.SplashNavKey
 import com.example.navigation.impl.AppNavigatorImpl
 import dagger.Module
 import dagger.Provides
@@ -18,7 +19,7 @@ object AppNavigatorModule {
     @ActivityRetainedScoped
     fun provideBackStackState(): MutableState<List<NavKey>> {
         return androidx.compose.runtime.mutableStateOf(
-            listOf(com.example.navigation.api.SplashNavKey)
+            listOf(SplashNavKey)
         )
     }
 
