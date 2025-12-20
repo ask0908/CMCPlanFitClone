@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.designsystem.component.card.PlanfitSelectableCard
@@ -79,7 +81,7 @@ fun OnboardingScreen7(
                     onValueChange = { newValue ->
                         birthday = newValue
                     },
-                    showLeadingIcon = false
+                    showLeadingIcon = false,
                 )
             }
 
@@ -101,7 +103,11 @@ fun OnboardingScreen7(
                     onValueChange = { newValue ->
                         height = newValue
                     },
-                    showLeadingIcon = false
+                    showLeadingIcon = false,
+                    suffix = "cm",
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number
+                    ),
                 )
             }
 
@@ -123,7 +129,11 @@ fun OnboardingScreen7(
                     onValueChange = { newValue ->
                         weight = newValue
                     },
-                    showLeadingIcon = false
+                    showLeadingIcon = false,
+                    suffix = "kg",
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number
+                    ),
                 )
             }
         }

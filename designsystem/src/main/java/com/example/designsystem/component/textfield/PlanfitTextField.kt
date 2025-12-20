@@ -5,9 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -18,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.designsystem.foundation.Spacing
 import com.example.designsystem.theme.CMCPlanFitCloneTheme
@@ -29,6 +33,9 @@ fun PlanfitTextField(
     modifier: Modifier = Modifier,
     placeholder: String = "",
     showLeadingIcon: Boolean = true,
+    textAlign: TextAlign = TextAlign.Start,
+    suffix: String? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     TextField(
         value = value,
@@ -51,6 +58,19 @@ fun PlanfitTextField(
         } else {
             null
         },
+        textStyle = LocalTextStyle.current.copy(textAlign = textAlign),
+        trailingIcon = if (suffix != null) {
+            {
+                Text(
+                    text = suffix,
+                    color = Color.White.copy(alpha = 0.7f),
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        } else {
+            null
+        },
+        keyboardOptions = keyboardOptions,
         colors = TextFieldDefaults.colors(
             focusedContainerColor = Color(0xFF3D3F46),
             unfocusedContainerColor = Color(0xFF3D3F46),
