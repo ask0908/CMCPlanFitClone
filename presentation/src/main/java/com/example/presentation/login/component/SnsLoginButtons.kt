@@ -24,11 +24,13 @@ import com.example.designsystem.theme.FacebookLoginButton
 import com.example.designsystem.theme.NotoSans
 
 @Composable
-fun SnsLoginButtons(modifier: Modifier = Modifier) {
+fun SnsLoginButtons(
+    onNavigateToOnboarding: () -> Unit,
+) {
     PlanfitSnsLoginButton(
         text = stringResource(com.example.presentation.R.string.kakao_login),
         iconRes = R.drawable.kakao_symbol,
-        onClick = {},
+        onClick = onNavigateToOnboarding,
         backgroundColor = Color.Yellow,
         contentColor = Color.Black
     )
@@ -38,7 +40,7 @@ fun SnsLoginButtons(modifier: Modifier = Modifier) {
     PlanfitSnsLoginButton(
         text = stringResource(com.example.presentation.R.string.apple_login),
         iconRes = R.drawable.apple_symbol,
-        onClick = {},
+        onClick = onNavigateToOnboarding,
         backgroundColor = Color.White,
         contentColor = Color.Black
     )
@@ -79,7 +81,7 @@ fun SnsLoginButtons(modifier: Modifier = Modifier) {
     ) {
         PlanfitSnsLoginButton(
             iconRes = R.drawable.google_symbol,
-            onClick = {},
+            onClick = onNavigateToOnboarding,
             backgroundColor = Color.White,
             iconSize = dp32
         )
@@ -88,7 +90,7 @@ fun SnsLoginButtons(modifier: Modifier = Modifier) {
         )
         PlanfitSnsLoginButton(
             iconRes = R.drawable.facebook_symbol,
-            onClick = {},
+            onClick = onNavigateToOnboarding,
             backgroundColor = FacebookLoginButton,
             iconSize = dp32
         )

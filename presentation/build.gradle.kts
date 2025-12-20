@@ -44,7 +44,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":designsystem"))
-    implementation(project(":navigation"))
+    implementation(project(":navigation:api"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

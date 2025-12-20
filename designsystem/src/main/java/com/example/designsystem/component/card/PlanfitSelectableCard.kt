@@ -90,7 +90,7 @@ fun PlanfitSelectableCard(
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = when {
-                rightText == null && leftTextAlignment == Alignment.CenterHorizontally -> Arrangement.Center
+                rightText == null -> Arrangement.Center
                 else -> Arrangement.Start
             },
             verticalAlignment = Alignment.CenterVertically

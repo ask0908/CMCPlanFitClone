@@ -1,10 +1,5 @@
-package com.example.presentation
+package com.example.presentation.splash
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,36 +14,32 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.designsystem.foundation.Spacing
+import com.example.designsystem.theme.CMCPlanFitCloneTheme
 import com.example.designsystem.theme.NotoSans
 import com.example.designsystem.theme.SplashBackground
 import com.example.designsystem.theme.SplashMintText
-import com.example.presentation.login.LoginActivity
-import com.example.presentation.ui.theme.CMCPlanFitCloneTheme
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.presentation.R
 import kotlinx.coroutines.delay
 
-@AndroidEntryPoint
-class SplashActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            CMCPlanFitCloneTheme {
-                PlanFitSplashScreen {
-                    startActivity(
-                        Intent(this, LoginActivity::class.java)
-                    )
-                    finish()
-                }
-            }
-        }
+/**
+ * 스플래시 화면
+ *
+ * @param onNavigateToLogin 로그인 화면으로 이동
+ */
+@Composable
+fun SplashScreen(
+    onNavigateToLogin: () -> Unit,
+) {
+    SplashContent()
+
+    LaunchedEffect(Unit) {
+        delay(2000L)
+        onNavigateToLogin()
     }
 }
 
 @Composable
-fun PlanFitSplashScreen(
-    onNavigateToMain: () -> Unit
-) {
+private fun SplashContent() {
     // sp를 쓰면 시스템 글자 크기에 영향을 받아서 dp를 sp로 변환
     val splashTitleFontSize = with(LocalDensity.current) {
         Spacing.dp48.toSp()
@@ -67,20 +58,17 @@ fun PlanFitSplashScreen(
             fontSize = splashTitleFontSize,
             fontWeight = FontWeight.Bold,
             fontFamily = NotoSans,
-            color = SplashMintText,
+            color = SplashMintText
         )
-    }
-
-    LaunchedEffect(Unit) {
-        delay(2000L)
-        onNavigateToMain()
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+private fun SplashScreenPreview() {
     CMCPlanFitCloneTheme {
-        PlanFitSplashScreen {}
+        SplashScreen(
+            onNavigateToLogin = {},
+        )
     }
 }

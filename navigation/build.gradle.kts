@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -36,17 +38,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    // navigation3
-    implementation(libs.androidx.navigation3.runtime)
-    implementation(libs.androidx.material3.adaptive.navigation3)
-
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.serialization.core.lib)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 }
