@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
@@ -197,23 +198,39 @@ fun OnboardingScreen3(
                     ) {
                         Button(
                             modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(Spacing.dp20),
+                            shape = RoundedCornerShape(Spacing.dp8),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFF282A2E),
+                                contentColor = Color(0xFFC6C6C8),
+                            ),
                             onClick = {
                                 showBottomSheet = false
                             }
                         ) {
-                            Text("다시 검색")
+                            PlanfitText(
+                                text = "다시 검색",
+                                color = Color(0xFFC6C6C8),
+                                fontWeight = FontWeight.Bold,
+                            )
                         }
                         Spacer(modifier = Modifier.width(Spacing.dp8))
                         Button(
                             modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(Spacing.dp20),
+                            shape = RoundedCornerShape(Spacing.dp8),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFF21ECC7),
+                                contentColor = Color.Black,
+                            ),
                             onClick = {
                                 showBottomSheet = false
                                 onNavigateToNextStep()
                             }
                         ) {
-                            Text("네, 맞아요")
+                            PlanfitText(
+                                text = "네, 맞아요",
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                            )
                         }
                     }
                 }
