@@ -1,6 +1,10 @@
 package com.example.presentation.onboarding.screen
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +17,10 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,15 +28,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.designsystem.component.card.PlanfitSelectableCard
+import androidx.compose.ui.unit.dp
 import com.example.designsystem.component.text.PlanfitText
 import com.example.designsystem.component.textfield.PlanfitTextField
 import com.example.designsystem.foundation.Spacing
+import com.example.presentation.onboarding.component.DatePickerContent
 import com.example.presentation.ui.theme.CMCPlanFitCloneTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OnboardingScreen7(
     onNavigateToNextStep: () -> Unit = {},
@@ -37,6 +48,12 @@ fun OnboardingScreen7(
     var birthday by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
+
+    // 스크롤하는 데이트피커 관련
+    var showDatePicker by remember { mutableStateOf(false) }
+    val bottomSheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
 
     Column(
         modifier = Modifier
@@ -76,13 +93,31 @@ fun OnboardingScreen7(
                     textAlign = TextAlign.Center,
                 )
                 Spacer(modifier = Modifier.width(Spacing.dp20))
-                PlanfitTextField(
-                    value = birthday,
-                    onValueChange = { newValue ->
-                        birthday = newValue
-                    },
-                    showLeadingIcon = false,
-                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .clip(RoundedCornerShape(Spacing.dp12))
+                        .background(Color(0xFF3D3F46))
+                        .clickable(
+                            onClick = { showDatePicker = true },
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        )
+                        .padding(horizontal = 16.dp),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    PlanfitText(
+                        text = birthday.ifEmpty { "" },
+                        fontSize = Spacing.dp16,
+                        color = if (birthday.isEmpty()) {
+                            Color.White.copy(alpha = 0.5f)
+                        } else {
+                            Color.White
+                        }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(Spacing.dp20))
@@ -153,6 +188,24 @@ fun OnboardingScreen7(
         }
 
         Spacer(modifier = Modifier.height(Spacing.dp24))
+    }
+
+    // 날짜 선택 바텀시트
+    if (showDatePicker) {
+        ModalBottomSheet(
+            onDismissRequest = { showDatePicker = false },
+            sheetState = bottomSheetState
+        ) {
+            DatePickerContent(
+                onConfirm = { year, month, day ->
+                    birthday = "${year}년 ${month}월 ${day}일"
+                    showDatePicker = false
+                },
+                onCancel = {
+                    showDatePicker = false
+                }
+            )
+        }
     }
 }
 
